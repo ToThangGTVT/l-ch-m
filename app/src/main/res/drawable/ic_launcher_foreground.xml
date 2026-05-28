@@ -1,0 +1,13 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Center a moon and star at approx 54,54 -->
+    <path
+        android:fillColor="#FFC107"
+        android:pathData="M38.5,54C38.5,45.44 45.44,38.5 54,38.5C56.24,38.5 58.37,38.99 60.29,39.85C56.2,41.97 53.33,46.12 53.33,50.88C53.33,57.17 58.43,62.27 64.72,62.27C65.5,62.27 66.25,62.19 66.97,62.05C64.67,66.36 60.05,69.5 54,69.5C45.44,69.5 38.5,62.56 38.5,54Z" />
+    <path
+        android:fillColor="#FFEB3B"
+        android:pathData="M70.5,45.5L72.77,40.52L77.75,38.25L72.77,35.98L70.5,31L68.23,35.98L63.25,38.25L68.23,40.52L70.5,45.5Z" />
+</vector>

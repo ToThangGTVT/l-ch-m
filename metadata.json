@@ -1,0 +1,6 @@
+{
+  "name": "Lịch Âm",
+  "description": "Ứng dụng xem lịch âm, lịch vạn niên",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
