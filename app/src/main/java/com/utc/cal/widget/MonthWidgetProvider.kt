@@ -132,9 +132,11 @@ internal fun updateMonthWidget(
         for (r in 0..5) {
             for (c in 0..6) {
                 val cellId = cellIds[r][c]
+                val cellName = context.resources.getResourceEntryName(cellId)
+                val bgCellId = context.resources.getIdentifier(cellName + "_bg", "id", context.packageName)
                 if (r == 0 && c < firstDayOfWeek) {
                     views.setTextViewText(cellId, "")
-                    views.setInt(cellId, "setBackgroundColor", Color.TRANSPARENT)
+                    views.setViewVisibility(bgCellId, android.view.View.INVISIBLE)
                 } else if (dayCounter <= daysInMonth) {
                     if (showLunar) {
                         val lunarDate = LunarUtils.getLunarDate(dayCounter, month + 1, year)
@@ -149,17 +151,18 @@ internal fun updateMonthWidget(
                     }
                     
                     if (dayCounter == currentDay) {
-                        views.setInt(cellId, "setBackgroundResource", todayBgResId)
+                        views.setViewVisibility(bgCellId, android.view.View.VISIBLE)
+                        views.setImageViewResource(bgCellId, todayBgResId)
                         views.setTextColor(cellId, primaryColor)
                     } else {
                         val isWeekend = if (startOnMonday) (c == 5 || c == 6) else (c == 0 || c == 6)
-                        views.setInt(cellId, "setBackgroundColor", Color.TRANSPARENT)
+                        views.setViewVisibility(bgCellId, android.view.View.INVISIBLE)
                         views.setTextColor(cellId, if (isWeekend) primaryColor else textColor)
                     }
                     dayCounter++
                 } else {
                     views.setTextViewText(cellId, "")
-                    views.setInt(cellId, "setBackgroundColor", Color.TRANSPARENT)
+                    views.setViewVisibility(bgCellId, android.view.View.INVISIBLE)
                 }
             }
         }
