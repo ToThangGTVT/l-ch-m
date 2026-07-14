@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/widget_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/widget_bg"
+    android:padding="8dp">
+
+    <!-- Header (Month/Year) -->
+    <TextView
+        android:id="@+id/widget_month_year"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tháng 5, 2024"
+        android:textColor="#B3261E"
+        android:textSize="18sp"
+        android:textStyle="bold" android:textFontWeight="600"
+        android:gravity="center"
+        android:textAllCaps="true"
+        android:paddingTop="8dp"
+        android:paddingBottom="4dp" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#F2B8B5" />
+
+    <!-- Body -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/widget_day"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="15"
+            android:textSize="64sp"
+            android:textStyle="normal" android:textFontWeight="500"
+            android:textColor="#8C1D18"
+            android:includeFontPadding="false" />
+
+        <TextView
+            android:id="@+id/widget_day_of_week"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Thứ Tư"
+            android:textSize="16sp"
+            android:textColor="#410E0B"
+            android:textAllCaps="true"
+            android:textStyle="bold" android:textFontWeight="600" />
+
+        <TextView
+            android:id="@+id/widget_lunar_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="15/4 (ÂL)"
+            android:textSize="16sp"
+            android:textColor="#8C1D18"
+            android:textStyle="bold" android:textFontWeight="600" />
+    </LinearLayout>
+
+</LinearLayout>

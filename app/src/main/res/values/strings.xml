@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Lịch Âm</string>
+    <string name="widget_description">Widget xem lịch nhanh trên màn hình chính</string>
+    <string name="widget_month_description">Widget xem lịch tháng trên màn hình chính</string>
 </resources>

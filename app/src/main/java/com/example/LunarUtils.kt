@@ -20,7 +20,7 @@ object LunarUtils {
     }
     
     fun getCanChiYear(lunarYear: Int): String {
-        return "${CAN[lunarYear % 10]} ${CHI[lunarYear % 12]}"
+        return "${CAN[(lunarYear % 10 + 10) % 10]} ${CHI[(lunarYear % 12 + 12) % 12]}"
     }
 
     // --- Astronomical Algorithms (Ho Ngoc Duc) ---
@@ -165,8 +165,8 @@ object LunarUtils {
        val can = arrayOf("Giáp", "Ất", "Bính", "Đinh", "Mậu", "Kỷ", "Canh", "Tân", "Nhâm", "Quý")
        val chi = arrayOf("Tý", "Sửu", "Dần", "Mão", "Thìn", "Tỵ", "Ngọ", "Mùi", "Thân", "Dậu", "Tuất", "Hợi")
        
-       val cc = (jd + 9) % 10
-       val ch = (jd + 1) % 12
+       val cc = ((jd + 9) % 10 + 10) % 10
+       val ch = ((jd + 1) % 12 + 12) % 12
        return "${can[cc]} ${chi[ch]}"
     }
 
@@ -174,8 +174,8 @@ object LunarUtils {
        val can = arrayOf("Giáp", "Ất", "Bính", "Đinh", "Mậu", "Kỷ", "Canh", "Tân", "Nhâm", "Quý")
        val chi = arrayOf("Dần", "Mão", "Thìn", "Tỵ", "Ngọ", "Mùi", "Thân", "Dậu", "Tuất", "Hợi", "Tý", "Sửu")
        val firstCanIndex = ((year % 5) * 2) % 10
-       val monthCan = can[(firstCanIndex + month - 1) % 10]
-       val monthChi = chi[(month - 1) % 12]
+       val monthCan = can[((firstCanIndex + month - 1) % 10 + 10) % 10]
+       val monthChi = chi[((month - 1) % 12 + 12) % 12]
        return "$monthCan $monthChi"
     }
 

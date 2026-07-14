@@ -1,0 +1,26 @@
+--- app/src/main/java/com/example/widget/MonthWidgetProvider.kt
++++ app/src/main/java/com/example/widget/MonthWidgetProvider.kt
+@@ -10,6 +10,7 @@
+ import android.widget.RemoteViews
+ import com.example.MainActivity
+ import com.example.R
++import android.util.Log
+ import java.util.Calendar
+ 
+ class MonthWidgetProvider : AppWidgetProvider() {
+@@ -31,6 +32,7 @@
+     appWidgetManager: AppWidgetManager,
+     appWidgetId: Int
+ ) {
++    try {
+     val views = RemoteViews(context.packageName, R.layout.widget_month)
+     
+     val calendar = Calendar.getInstance()
+@@ -194,5 +196,8 @@
+     views.setOnClickPendingIntent(R.id.widget_month_year, pendingIntent)
+ 
+     appWidgetManager.updateAppWidget(appWidgetId, views)
++    } catch (e: Exception) {
++        Log.e("MonthWidgetProvider", "Error updating widget", e)
++    }
+ }
