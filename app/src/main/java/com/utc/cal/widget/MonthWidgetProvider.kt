@@ -110,17 +110,23 @@ internal fun updateMonthWidget(
                 if (i == 0 || i == 6) headerColor else weekdayHeaderColor
             }
             views.setTextColor(headerIds[i], cColor)
-            views.setTextViewTextSize(headerIds[i], android.util.TypedValue.COMPLEX_UNIT_SP, 14F)
+            views.setTextViewTextSize(headerIds[i], android.util.TypedValue.COMPLEX_UNIT_SP, 12F)
         }
         
-        views.setTextColor(R.id.widget_month_year, if (settings.widgetThemeColor == 0xFFFFFFFF.toInt() && !(settings.useDynamicColor && android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.S)) Color.BLACK else headerColor)
-        
+        val titleColor = if (settings.widgetThemeColor == 0xFFFFFFFF.toInt() && !(settings.useDynamicColor && android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.S)) Color.BLACK else headerColor
+        views.setTextColor(R.id.widget_month_year, titleColor)
+        views.setTextColor(R.id.widget_lunar_subtitle, titleColor)
+
         val calendar = Calendar.getInstance()
         val currentDay = calendar.get(Calendar.DAY_OF_MONTH)
         val month = calendar.get(Calendar.MONTH)
         val year = calendar.get(Calendar.YEAR)
-        
+
         views.setTextViewText(R.id.widget_month_year, "Tháng ${month + 1}, $year")
+
+        // Today's lunar date shown under the title, e.g. "23/6 ÂL"
+        val todayLunar = LunarUtils.getLunarDate(currentDay, month + 1, year)
+        views.setTextViewText(R.id.widget_lunar_subtitle, "(${todayLunar.day} Th ${todayLunar.month} ÂL)")
         
         val clone = calendar.clone() as Calendar
         clone.set(Calendar.DAY_OF_MONTH, 1)
@@ -148,11 +154,11 @@ internal fun updateMonthWidget(
                         val lunarStr = if (lunarDate.day == 1) "${lunarDate.day}/${lunarDate.month}" else "${lunarDate.day}"
                         val htmlText = Html.fromHtml("$dayCounter<br><small>$lunarStr</small>", Html.FROM_HTML_MODE_LEGACY)
                         views.setTextViewText(cellId, htmlText)
-                        views.setTextViewTextSize(cellId, android.util.TypedValue.COMPLEX_UNIT_SP, 8f)
+                        views.setTextViewTextSize(cellId, android.util.TypedValue.COMPLEX_UNIT_SP, 11f)
                     } else {
                         val htmlText = Html.fromHtml("$dayCounter", Html.FROM_HTML_MODE_LEGACY)
                         views.setTextViewText(cellId, htmlText)
-                        views.setTextViewTextSize(cellId, android.util.TypedValue.COMPLEX_UNIT_SP, 10f)
+                        views.setTextViewTextSize(cellId, android.util.TypedValue.COMPLEX_UNIT_SP, 12f)
                     }
                     
                     if (dayCounter == currentDay) {
