@@ -13,7 +13,6 @@ import com.utc.cal.R
 import com.utc.cal.LunarUtils
 import java.util.Calendar
 import android.util.Log
-import androidx.compose.ui.unit.dp
 import androidx.core.graphics.toColorInt
 
 class MonthWidgetProvider : AppWidgetProvider() {

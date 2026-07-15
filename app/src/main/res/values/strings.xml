@@ -2,4 +2,22 @@
     <string name="app_name">Lịch Âm</string>
     <string name="widget_description">Widget xem lịch nhanh trên màn hình chính</string>
     <string name="widget_month_description">Widget xem lịch tháng trên màn hình chính</string>
+
+    <string name="previous_month">Tháng trước</string>
+    <string name="next_month">Tháng sau</string>
+    <string name="settings">Cài đặt</string>
+
+    <string name="solar_label">DƯƠNG LỊCH</string>
+    <string name="lunar_label">ÂM LỊCH</string>
+    <string name="canchi_day">NGÀY</string>
+    <string name="canchi_month">THÁNG</string>
+
+    <string name="settings_title">Cài đặt Widget</string>
+    <string name="settings_show_lunar">Hiện âm lịch</string>
+    <string name="settings_start_monday">Bắt đầu tuần bằng Thứ Hai</string>
+    <string name="settings_dynamic_color">Dùng màu hệ thống (Android 12+)</string>
+    <string name="settings_theme_color">Màu chủ đạo</string>
+    <string name="save">Lưu</string>
+    <string name="cancel">Hủy</string>
+    <string name="selected">Đã chọn</string>
 </resources>
