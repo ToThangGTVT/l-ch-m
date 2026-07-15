@@ -12,11 +12,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="#B3261E"
-        android:textSize="18sp"
+        android:textSize="16sp"
         android:textStyle="bold" android:textFontWeight="600"
         android:gravity="start|center_vertical"
-        android:paddingStart="0dp"
-        android:paddingTop="8dp" />
+        android:paddingTop="4dp" />
 
     <TextView
         android:id="@+id/widget_lunar_subtitle"

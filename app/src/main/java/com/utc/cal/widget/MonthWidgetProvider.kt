@@ -158,7 +158,7 @@ internal fun updateMonthWidget(
                     } else {
                         val htmlText = Html.fromHtml("$dayCounter", Html.FROM_HTML_MODE_LEGACY)
                         views.setTextViewText(cellId, htmlText)
-                        views.setTextViewTextSize(cellId, android.util.TypedValue.COMPLEX_UNIT_SP, 12f)
+                        views.setTextViewTextSize(cellId, android.util.TypedValue.COMPLEX_UNIT_SP, 11f)
                     }
                     
                     if (dayCounter == currentDay) {
