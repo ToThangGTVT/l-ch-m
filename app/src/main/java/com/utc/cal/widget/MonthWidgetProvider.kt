@@ -13,6 +13,8 @@ import com.utc.cal.R
 import com.utc.cal.LunarUtils
 import java.util.Calendar
 import android.util.Log
+import androidx.compose.ui.unit.dp
+import androidx.core.graphics.toColorInt
 
 class MonthWidgetProvider : AppWidgetProvider() {
 
@@ -46,7 +48,7 @@ internal fun updateMonthWidget(
         
         var todayBgResId = R.drawable.widget_today_bg
         if (settings.widgetThemeColor == 0xFFFFFFFF.toInt() && !(settings.useDynamicColor && android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.S)) {
-            primaryColor = android.graphics.Color.parseColor("#0A56D9")
+            primaryColor = "#0A56D9".toColorInt()
             todayBgResId = R.drawable.widget_today_bg_blue
         }
         
@@ -68,13 +70,13 @@ internal fun updateMonthWidget(
         val textColor = if (settings.useDynamicColor && android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.S) {
             context.resources.getColor(android.R.color.system_neutral1_900, context.theme)
         } else if (settings.widgetThemeColor == 0xFFFFFFFF.toInt()) {
-            android.graphics.Color.BLACK
+            Color.BLACK
         } else {
-            android.graphics.Color.parseColor("#1D1B1E")
+            "#1D1B1E".toColorInt()
         }
         val headerColor = primaryColor
         val weekdayHeaderColor = if (settings.widgetThemeColor == 0xFFFFFFFF.toInt() && !(settings.useDynamicColor && android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.S)) {
-            android.graphics.Color.BLACK
+            Color.BLACK
         } else {
             (primaryColor and 0x00FFFFFF) or -0x40000000
         }
@@ -106,9 +108,10 @@ internal fun updateMonthWidget(
                 if (i == 0 || i == 6) headerColor else weekdayHeaderColor
             }
             views.setTextColor(headerIds[i], cColor)
+            views.setTextViewTextSize(headerIds[i], android.util.TypedValue.COMPLEX_UNIT_SP, 14F)
         }
         
-        views.setTextColor(R.id.widget_month_year, if (settings.widgetThemeColor == 0xFFFFFFFF.toInt() && !(settings.useDynamicColor && android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.S)) android.graphics.Color.BLACK else headerColor)
+        views.setTextColor(R.id.widget_month_year, if (settings.widgetThemeColor == 0xFFFFFFFF.toInt() && !(settings.useDynamicColor && android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.S)) Color.BLACK else headerColor)
         
         val calendar = Calendar.getInstance()
         val currentDay = calendar.get(Calendar.DAY_OF_MONTH)

@@ -1,5 +1,6 @@
 package com.utc.cal.ui.components
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -39,7 +40,7 @@ fun Header(month: Int, year: Int, onPreviousMonth: () -> Unit, onNextMonth: () -
             Icon(
                 imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                 contentDescription = "Tháng trước",
-                tint = androidx.compose.material3.MaterialTheme.colorScheme.onSurface
+                tint = MaterialTheme.colorScheme.onSurface
             )
         }
         Text(
@@ -47,13 +48,13 @@ fun Header(month: Int, year: Int, onPreviousMonth: () -> Unit, onNextMonth: () -
             fontSize = 18.sp,
             fontWeight = FontWeight.Bold,
             letterSpacing = 1.sp,
-            color = androidx.compose.material3.MaterialTheme.colorScheme.onSurface
+            color = MaterialTheme.colorScheme.onSurface
         )
         IconButton(onClick = onNextMonth) {
             Icon(
                 imageVector = Icons.AutoMirrored.Filled.ArrowForward,
                 contentDescription = "Tháng sau",
-                tint = androidx.compose.material3.MaterialTheme.colorScheme.onSurface
+                tint = MaterialTheme.colorScheme.onSurface
             )
         }
     }
@@ -75,7 +76,7 @@ fun DaysOfWeekHeader(startOnMonday: Boolean) {
                 textAlign = TextAlign.Center,
                 fontSize = 12.sp,
                 fontWeight = FontWeight.Bold,
-                color = if (day == "CN" || day == "T7") androidx.compose.material3.MaterialTheme.colorScheme.error else androidx.compose.material3.MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f)
+                color = if (day == "CN" || day == "T7") MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f)
             )
         }
     }
@@ -156,22 +157,22 @@ fun DayCell(
     onClick: () -> Unit
 ) {
     val bgColor = when {
-        isSelected -> androidx.compose.material3.MaterialTheme.colorScheme.primaryContainer
-        isToday -> androidx.compose.material3.MaterialTheme.colorScheme.secondaryContainer
+        isSelected -> MaterialTheme.colorScheme.primaryContainer
+        isToday -> MaterialTheme.colorScheme.secondaryContainer
         else -> Color.Transparent
     }
     
     val textColor = when {
-        isSelected -> androidx.compose.material3.MaterialTheme.colorScheme.onPrimaryContainer
-        isToday -> androidx.compose.material3.MaterialTheme.colorScheme.onSecondaryContainer
-        isWeekend -> androidx.compose.material3.MaterialTheme.colorScheme.error
-        else -> androidx.compose.material3.MaterialTheme.colorScheme.onSurface
+        isSelected -> MaterialTheme.colorScheme.onPrimaryContainer
+        isToday -> MaterialTheme.colorScheme.onSecondaryContainer
+        isWeekend -> MaterialTheme.colorScheme.error
+        else -> MaterialTheme.colorScheme.onSurface
     }
     
     val lunarTextColor = when {
-        isSelected -> androidx.compose.material3.MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.7f)
-        isToday -> androidx.compose.material3.MaterialTheme.colorScheme.onSecondaryContainer.copy(alpha = 0.7f)
-        else -> androidx.compose.material3.MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
+        isSelected -> MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.7f)
+        isToday -> MaterialTheme.colorScheme.onSecondaryContainer.copy(alpha = 0.7f)
+        else -> MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
     }
 
     Box(
@@ -199,6 +200,7 @@ fun DayCell(
     }
 }
 
+@SuppressLint("UnusedBoxWithConstraintsScope")
 @Composable
 fun DateDetailsCard(date: Calendar, modifier: Modifier = Modifier) {
     val dd = date.get(Calendar.DAY_OF_MONTH)
@@ -218,15 +220,15 @@ fun DateDetailsCard(date: Calendar, modifier: Modifier = Modifier) {
             modifier = Modifier
                 .fillMaxWidth()
                 .weight(1f)
-                .background(androidx.compose.material3.MaterialTheme.colorScheme.surfaceVariant, RoundedCornerShape(24.dp))
-                .border(1.dp, androidx.compose.material3.MaterialTheme.colorScheme.outlineVariant, RoundedCornerShape(24.dp))
+                .background(MaterialTheme.colorScheme.surfaceVariant, RoundedCornerShape(24.dp))
+                .border(1.dp, MaterialTheme.colorScheme.outlineVariant, RoundedCornerShape(24.dp))
                 .padding(16.dp)
         ) {
             Text(
                 text = dayOfWeek.uppercase(),
                 fontSize = 12.sp,
                 fontWeight = FontWeight.Bold,
-                color = androidx.compose.material3.MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f),
+                color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f),
                 letterSpacing = 1.sp,
                 modifier = Modifier.align(Alignment.TopStart)
             )
@@ -245,14 +247,14 @@ fun DateDetailsCard(date: Calendar, modifier: Modifier = Modifier) {
                         text = dd.toString(),
                         fontSize = 56.sp,
                         fontWeight = FontWeight.Medium,
-                        color = androidx.compose.material3.MaterialTheme.colorScheme.onSurface,
+                        color = MaterialTheme.colorScheme.onSurface,
                         lineHeight = 56.sp
                     )
                     Text(
                         text = "Tháng $mm, $yyyy",
                         fontSize = 14.sp,
                         fontWeight = FontWeight.Medium,
-                        color = androidx.compose.material3.MaterialTheme.colorScheme.onSurfaceVariant
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
                 }
 
@@ -261,7 +263,7 @@ fun DateDetailsCard(date: Calendar, modifier: Modifier = Modifier) {
                     modifier = Modifier
                         .width(1.dp)
                         .fillMaxHeight(0.7f)
-                        .background(androidx.compose.material3.MaterialTheme.colorScheme.outlineVariant)
+                        .background(MaterialTheme.colorScheme.outlineVariant)
                 )
 
                 // Right: Lunar
@@ -274,7 +276,7 @@ fun DateDetailsCard(date: Calendar, modifier: Modifier = Modifier) {
                         text = "ÂM LỊCH",
                         fontSize = 10.sp,
                         fontWeight = FontWeight.Bold,
-                        color = androidx.compose.material3.MaterialTheme.colorScheme.secondary.copy(alpha = 0.8f),
+                        color = MaterialTheme.colorScheme.secondary.copy(alpha = 0.8f),
                         letterSpacing = 1.sp,
                         modifier = Modifier.padding(bottom = 4.dp)
                     )
@@ -283,13 +285,13 @@ fun DateDetailsCard(date: Calendar, modifier: Modifier = Modifier) {
                             text = String.format("%02d", lunarDate.day),
                             fontSize = 32.sp,
                             fontWeight = FontWeight.Medium,
-                            color = androidx.compose.material3.MaterialTheme.colorScheme.secondary
+                            color = MaterialTheme.colorScheme.secondary
                         )
                         Text(
                             text = "/${String.format("%02d", lunarDate.month)}${if (lunarDate.isLeap) " Nhuận" else ""}",
                             fontSize = 16.sp,
                             fontWeight = FontWeight.Medium,
-                            color = androidx.compose.material3.MaterialTheme.colorScheme.secondary,
+                            color = MaterialTheme.colorScheme.secondary,
                             modifier = Modifier.padding(bottom = 4.dp)
                         )
                     }
@@ -297,7 +299,7 @@ fun DateDetailsCard(date: Calendar, modifier: Modifier = Modifier) {
                         text = "Năm $yearCanChi".uppercase(),
                         fontSize = 11.sp,
                         fontWeight = FontWeight.SemiBold,
-                        color = androidx.compose.material3.MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.8f),
+                        color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.8f),
                         letterSpacing = 1.sp,
                         modifier = Modifier.padding(top = 4.dp)
                     )
@@ -315,8 +317,8 @@ fun DateDetailsCard(date: Calendar, modifier: Modifier = Modifier) {
 fun CanChiCard(modifier: Modifier = Modifier, label: String, value: String) {
     Column(
         modifier = modifier
-            .background(androidx.compose.material3.MaterialTheme.colorScheme.surface, RoundedCornerShape(16.dp))
-            .border(1.dp, androidx.compose.material3.MaterialTheme.colorScheme.outlineVariant, RoundedCornerShape(16.dp))
+            .background(MaterialTheme.colorScheme.surface, RoundedCornerShape(16.dp))
+            .border(1.dp, MaterialTheme.colorScheme.outlineVariant, RoundedCornerShape(16.dp))
             .padding(12.dp),
         verticalArrangement = Arrangement.spacedBy(4.dp)
     ) {
@@ -324,14 +326,14 @@ fun CanChiCard(modifier: Modifier = Modifier, label: String, value: String) {
             text = label.uppercase(),
             fontSize = 10.sp,
             fontWeight = FontWeight.Bold,
-            color = androidx.compose.material3.MaterialTheme.colorScheme.primary,
+            color = MaterialTheme.colorScheme.primary,
             letterSpacing = 1.sp
         )
         Text(
             text = value,
             fontSize = 18.sp,
             fontWeight = FontWeight.Medium,
-            color = androidx.compose.material3.MaterialTheme.colorScheme.onSurface
+            color = MaterialTheme.colorScheme.onSurface
         )
     }
 }
