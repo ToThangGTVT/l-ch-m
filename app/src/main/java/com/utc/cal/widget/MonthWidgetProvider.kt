@@ -46,9 +46,12 @@ internal fun updateMonthWidget(
         }
         
         var todayBgResId = R.drawable.widget_today_bg
+        var todayTextColor = primaryColor
         if (settings.widgetThemeColor == 0xFFFFFFFF.toInt() && !(settings.useDynamicColor && android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.S)) {
             primaryColor = "#0A56D9".toColorInt()
-            todayBgResId = R.drawable.widget_today_bg_blue
+            // White theme: today marker is a solid red circle with white text
+            todayBgResId = R.drawable.widget_today_bg_red
+            todayTextColor = Color.WHITE
         }
         
         val bgResId = if (settings.useDynamicColor && android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.S) {
@@ -155,7 +158,7 @@ internal fun updateMonthWidget(
                     if (dayCounter == currentDay) {
                         views.setViewVisibility(bgCellId, android.view.View.VISIBLE)
                         views.setImageViewResource(bgCellId, todayBgResId)
-                        views.setTextColor(cellId, primaryColor)
+                        views.setTextColor(cellId, todayTextColor)
                     } else {
                         val isWeekend = if (startOnMonday) (c == 5 || c == 6) else (c == 0 || c == 6)
                         views.setViewVisibility(bgCellId, android.view.View.INVISIBLE)
